@@ -1,0 +1,17 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+@font-face {
+  font-family: 'AlbertSans-Regular';
+  src: url('../public/fonts/AlbertSans-Regular.ttf');
+}
+
+body {
+  font-family: 'AlbertSans-Regular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #030202;
+}
+
+li {
+  list-style: none;
+}

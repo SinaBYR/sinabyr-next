@@ -1,0 +1,38 @@
+// tech tags container
+.techList {
+  display: flex;
+  width: 382px;
+  overflow-x: auto;
+}
+
+// each tech tag
+.techTag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1d1d;
+  padding: 4px;
+  margin-right: 8px;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: grab !important;
+  }
+}
+
+// tech tag remove button
+.techRemoveBtn {
+  width: 20px;
+  color: #f4f4f4;
+  background-color: #252525;
+  font-size: 1rem;
+  margin-left: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 680px) {
+  .techList {
+    width: 340px;
+  }
+}

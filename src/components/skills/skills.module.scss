@@ -1,0 +1,35 @@
+.skills {
+  color: #f4f4f4;
+  background-color: #030202;
+  padding-top: 1rem;
+  margin-bottom: 4rem;
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 780px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 680px) {
+  .skills {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .technologies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

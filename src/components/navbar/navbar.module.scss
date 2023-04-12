@@ -1,0 +1,39 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  color: #e4e4e4;
+  background-color: #020303;
+  padding: 0 1rem;
+  transition: height 400ms;
+  z-index: 2;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  max-width: 980px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.shrunk {
+  height: 72px;
+}
+
+.logoWrapper {
+  height: 100%;
+  margin-right: auto;
+}
+
+.linksWrapper {
+  display: flex;
+}
+
+@media screen and (max-width: 680px) {
+  .linksWrapper {
+    display: none;
+  }
+}

@@ -1,0 +1,11 @@
+.customError {
+  text-align: center;
+
+  & > *:nth-child(1) {
+    margin-bottom: 1rem;
+  }
+
+  & > *:nth-child(2) {
+    margin-bottom: 1rem;
+  }
+}

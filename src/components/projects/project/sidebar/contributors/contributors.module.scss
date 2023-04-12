@@ -1,0 +1,49 @@
+.contributors {
+  width: 350px;
+  background-color: #141414;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+
+  h4 {
+    margin-bottom: 12px;
+  }
+}
+
+.avatars {
+  position: sticky;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  margin-left: 5px;
+
+  li {
+    position: sticky;
+    width: 40px;
+    height: 40px;
+    margin-left: -5px;
+    border: 1px solid #999999;
+    border-radius: 50px;
+
+    &:last-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #f4f4f4;
+      cursor: pointer;
+    }
+  }
+
+  img {
+    border-radius: 50px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .contributors {
+    width: 100%;
+    padding: 0;
+  }
+}

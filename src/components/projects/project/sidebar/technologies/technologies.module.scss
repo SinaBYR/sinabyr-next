@@ -1,0 +1,18 @@
+.technologies {
+  h4 {
+    margin-bottom: 12px;
+  }
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+
+  span {
+    background-color: #2c2c2c;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 4px;
+    border-radius: 5px;
+  }
+}

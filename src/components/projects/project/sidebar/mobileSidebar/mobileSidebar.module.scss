@@ -1,0 +1,26 @@
+.mobileSidebar {
+  display: none;
+  margin: 1rem 0;
+  height: fit-content;
+  background-color: #141414;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.createdAt {
+  margin-bottom: 1rem;
+
+  h4 {
+    margin-bottom: 12px;
+  }
+
+  div {
+    color: #bdbdbd;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .mobileSidebar {
+    display: block;
+  }
+}

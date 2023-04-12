@@ -1,0 +1,10 @@
+.links {
+  display: flex;
+  gap: 0 4px;
+  margin-bottom: 2rem;
+
+  & > * {
+    justify-content: center;
+    width: 100%;
+  }
+}

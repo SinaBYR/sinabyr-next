@@ -1,0 +1,33 @@
+.sidebar {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  width: 350px;
+  height: fit-content;
+}
+
+.topSection {
+  width: 350px;
+  background-color: #141414;
+  padding: 1rem;
+  margin-top: 73px;
+  border-radius: 5px;
+}
+
+.createdAt {
+  margin-bottom: 2rem;
+
+  h4 {
+    margin-bottom: 12px;
+  }
+
+  div {
+    color: #bdbdbd;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .sidebar {
+    display: none;
+  }
+}

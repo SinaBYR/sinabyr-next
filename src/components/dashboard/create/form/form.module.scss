@@ -1,0 +1,49 @@
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 8px;
+
+  label {
+    display: inline-block;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    color: #f4f4f4;
+    background-color: #252525;
+    background-color: #1a1d1d;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #020303;
+  }
+
+  // span techList and Editor.
+  & > *:is(:nth-child(5), :nth-child(6)) {
+    grid-column: 1/ span 2;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 680px) {
+  .inputs {
+    grid-template-columns: 1fr;
+
+    & > *:is(:nth-child(5), :nth-child(6)) {
+      grid-column: auto;
+    }
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,58 @@
+.dashboard {
+  color: #f7f7f7;
+  padding: 1rem;
+}
+
+.dashboardWrapper {
+  display: grid;
+  grid-template-columns: 230px auto;
+  max-width: 1080px;
+  height: calc(100vh - 32px);
+  max-height: 100vh;
+  margin: 0 auto;
+}
+
+.workspace {
+  background-color: #0a0d0f;
+  margin-left: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+.menu {
+  display: none;
+  width: 100%;
+  padding: 1rem;
+  background-color: #0a0d0f;
+  border-radius: 10px;
+  
+  &.open {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 1rem;
+    
+    a {
+      width: 100%;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .dashboardWrapper {
+    display: block;
+    height: 100%;
+    max-height: auto;
+  }
+
+  .workspace {
+    margin-left: 0;
+  }
+}

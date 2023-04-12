@@ -1,0 +1,148 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-100%);
+  // transition for closing menu
+  transition: transform 500ms ease-out 1000ms;
+  background-color: #030202;
+  overflow-y: hidden;
+  z-index: 1;
+
+  &.open {
+    // transition for opening menu
+    transition: transform 500ms ease-out;
+    transform: translateY(0);
+    overflow-y: auto;
+
+    // Animations are set if menu is opened.
+    // This way, we'll make sure everytime "open" classname gets added, animation properties
+    // will also be set again, making sure that animations run everytime.
+    // .linksWrapper {
+    //   opacity: 0;
+    //   transform: translateY(-25px);
+    //   animation: content-delay forwards 400ms 1000ms ease-out;
+    // }
+   
+    .logoWrapper {
+      animation: logo-delay forwards 400ms 600ms ease-out;
+      opacity: 0;
+    }
+
+    .linksWrapper {
+      li {
+        opacity: 0;
+        transform: translateY(-10px);
+        animation: li-delay forwards 400ms;
+
+        &:first-child {
+          animation-delay: 1000ms;
+        }
+    
+        &:nth-child(2) {
+          animation-delay: 1200ms;
+        }
+    
+        &:nth-child(3) {
+          animation-delay: 1400ms;
+        }
+      }
+    }
+  }
+  
+  &:not(.open) {
+    .logoWrapper {
+      opacity: 0;
+      animation: logo-delay-closing forwards 400ms ease-out;
+    }
+
+    .linksWrapper {
+      li {
+        animation: li-delay-closing forwards 400ms;
+
+        &:first-child {
+          animation-delay: 300ms;
+        }
+
+        &:nth-child(2) {
+          animation-delay: 400ms;
+        }
+
+        &:last-child {
+          animation-delay: 500ms;
+        }
+      }
+    }
+  }
+}
+
+.linksWrapper {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+
+  li {
+    margin-bottom: 1rem;
+  }
+}
+
+.container {
+  padding: 1rem;
+}
+
+@keyframes content-delay {
+  10% {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logo-delay {
+  10% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes li-delay {
+  10% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logo-delay-closing {
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes li-delay-closing {
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  70% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}

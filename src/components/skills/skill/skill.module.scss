@@ -1,0 +1,12 @@
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  flex: 0 0 calc(16.66% - 20px);
+}
+
+.title {
+  color: #bebebe;
+  text-align: center;
+}

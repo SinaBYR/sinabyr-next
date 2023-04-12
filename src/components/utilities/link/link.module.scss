@@ -1,0 +1,36 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.primary {
+  color: #ffffff;
+  background-color: #0a0d0f;
+  padding: 0.5rem 1rem;
+}
+
+.secondary {
+  color: #0a0d0f;
+  background-color: #f7f7f7;
+  padding: 0.3rem 1rem;
+}
+
+.simple {
+  color: white;
+  transition: opacity 400ms;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.simple-alt {
+  color: #ffffff;
+  background-color: #030202;
+  padding: 0.5rem 1rem;
+}

@@ -1,0 +1,47 @@
+.showcase {
+  color: #f4f4f4;
+  padding: 1rem;
+  margin-bottom: 4rem;
+  min-height: 400px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  & > * {
+    margin: 0 auto;
+  }
+}
+
+.linkWrapper {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 680px) {
+  .wrapper {
+    h2 {
+      font-size: 2rem;
+    }
+  }
+  .projects {
+    display: block;
+
+    & > * {
+      margin-bottom: 2rem;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.sidebar {
+  background-color: #0a0d0f;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.greeting {
+  margin-bottom: 1rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+  overflow-y: auto;
+  
+  li {
+    margin-bottom: 1rem;
+    
+    a {
+      width: 100%;
+      text-align: center !important;
+    }
+
+    &:nth-last-child(2) {
+      margin-top: auto;
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .sidebar {
+    display: none;
+  }
+}
