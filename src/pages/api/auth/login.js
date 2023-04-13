@@ -1,12 +1,11 @@
-import { pool } from "../../lib/database";
-import { withSessionRoute } from "../../lib/withSession";
-import { verifyPassword } from "../../lib/password";
+import { pool } from "../../../lib/database";
+import { withSessionRoute } from "../../../lib/withSession";
+import { verifyPassword } from "../../../lib/password";
 
 export default withSessionRoute(handler);
 
 async function handler(req, res) {
   const { body } = req;
-  console.log(body)
 
   if(!body || !body.username || !body.passphrase) {
     return res.status(400).send({
@@ -29,7 +28,6 @@ async function handler(req, res) {
       })
     }
 
-    // const match = await bcrypt.compare(body.passphrase, user.passphrase);
     const match = await verifyPassword(body.passphrase, user.passphrase);
 
     if(!match) {
@@ -39,14 +37,13 @@ async function handler(req, res) {
     }
 
     delete user.passphrase;
-    req.session.userId = user.id;
+    req.session.user = user;
     await req.session.save();
-    
-    // res.json({
-    //   ...user,
-    //   isLoggedIn: true
-    // });
-    res.json(user);
+
+    res.json({
+      isLoggedIn: true,
+      ...user
+    });
   } catch(err) {
     console.log(err);
     res.status(500).send({err});

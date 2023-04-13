@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/layout/rootLayout.jsx"  ],
+, "src/components/layout/rootLayout.jsx", "src/pages/api/auth/logout.js", "src/lib/useUser.ts"  ],
   "exclude": [
     "node_modules"
   ]

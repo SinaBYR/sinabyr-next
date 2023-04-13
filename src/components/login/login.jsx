@@ -39,7 +39,7 @@ export function Login() {
       // });
       const headers = new Headers();
       headers.set('Content-Type', 'application/json');
-      const response = await fetch('/api/login', {
+      const response = await fetch('/api/auth/login', {
         body: JSON.stringify(values),
         headers,
         method: 'POST'

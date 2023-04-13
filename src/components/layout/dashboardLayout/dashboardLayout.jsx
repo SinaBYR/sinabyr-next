@@ -8,13 +8,14 @@ import { MobileHeader } from '../../dashboard/mobileHeader/mobileHeader';
 import { SidebarLinks } from '../../dashboard/sidebarLinks/sidebarLinks';
 import { useAuth } from '../../../lib/useAuth';
 
-export default function DashboardLayout({ children }) {
+export default function DashboardLayout({ children, ...rest }) {
+  console.log(rest);
   const [_state, dispatch] = useAuth();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   async function fetchUser() {
-    let response = await fetch('/api/user');
+    let response = await fetch('/api/auth/user');
     let result = await response.json();
     if(response.status === 401) {
       return router.push('/login');
