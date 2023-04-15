@@ -3,6 +3,7 @@ import classes from './mobileSidebar.module.scss';
 import { Contributors } from '../contributors/contributors';
 import { Links } from '../links/links';
 import { Technologies } from '../technologies/technologies';
+import moment from 'moment';
 
 // interface Props {
 //   demo_url: string;
@@ -18,7 +19,7 @@ export function MobileSidebar({ demo_url, created_at, tech, repo, contributors }
       <Links repo={repo} demo_url={demo_url}/>
       <div className={classes.createdAt}>
         <h4>Created at</h4>
-        <div>{new Date(created_at).toLocaleString()}</div>
+        <div>{moment(created_at).format('MMM DD YYYY')}</div>
       </div>
       <Technologies list={tech}/>
       <Contributors list={contributors}/>

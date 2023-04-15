@@ -2,7 +2,7 @@ import { Landing } from '../../components/landing/landing';
 import { Showcase } from '../../components/showcase/showcase';
 import { Contact } from '../../components/contact/contact';
 import { Skills } from '../../components/skills/skills';
-import { getReducedProjects } from '../../lib/projects';
+import { getReducedProjects } from './lib';
 
 export const metadata = {
   title: 'Sina Beyraghdar'

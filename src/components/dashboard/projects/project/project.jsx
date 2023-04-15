@@ -15,7 +15,7 @@ export function Project({ id, title, created_at, last_edited_at }) {
     <div className={classes.project}>
       <div className={classes.info}>
         <h4>{title}</h4>
-        {/* <div className={classes.dates}>
+        <div className={classes.dates}>
           <div>
             <MdCreate style={{color: '#282828', fontSize: '14px', marginRight: '8px'}}/>
             <span>{moment(created_at).format('MMM DD YYYY')}</span>
@@ -29,7 +29,7 @@ export function Project({ id, title, created_at, last_edited_at }) {
               <span>{moment(last_edited_at).format('MMM DD YYYY')}</span>
             </div>
           }
-        </div> */}
+        </div>
       </div>
       <div className={classes.controls}>
         <Link href={"/dashboard/projects/" + id} title="archive"><MdArchive /></Link>

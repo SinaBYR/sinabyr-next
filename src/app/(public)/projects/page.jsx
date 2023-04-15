@@ -1,4 +1,4 @@
-import { getReducedProjects } from '../../../lib/projects';
+import { getReducedProjects } from '../lib';
 import { Projects } from '../../../components/projects/projects';
 
 export default async function ProjectsPage() {

@@ -3,6 +3,7 @@ import classes from './sidebar.module.scss';
 import { Links } from './links/links';
 import { Technologies } from './technologies/technologies';
 import { Contributors } from './contributors/contributors';
+import moment from 'moment';
 
 // interface Props {
 //   demo_url: string;
@@ -19,7 +20,7 @@ export function Sidebar({ demo_url, tech, created_at, repo, contributors }) {
         <Links repo={repo} demo_url={demo_url}/>
         <div className={classes.createdAt}>
           <h4>Created at</h4>
-          <div>{new Date(created_at).toDateString()}</div>
+          <div>{moment(created_at).format('MMM DD YYYY')}</div>
         </div>
         <Technologies list={tech}/>
       </div>
