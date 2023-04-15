@@ -25,7 +25,10 @@ async function handler(req, res) {
     //   ...user,
     //   isLoggedIn: true
     // });
-    res.json(user);
+    res.json({
+      isLoggedIn: true,
+      ...user
+    });
   } catch(err) {
     res.status(500).send(err);
   }

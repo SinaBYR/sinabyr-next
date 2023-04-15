@@ -1,19 +1,19 @@
 'use client';
 
 import classes from './login.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import { useFormik } from 'formik';
 import { Button } from '../utilities';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { fetchJson } from '../../lib/fetchJson';
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../../lib/useAuth';
+import { useClientAuth } from '../../lib/useClientAuth';
 
 export function Login() {
-  const [state, dispatch] = useAuth();
+  const { mutateUser } = useClientAuth({
+    redirectTo: '/dashboard',
+    redirectIfFound: true
+  });
   const router = useRouter();
-
   const { values, handleSubmit, handleChange, handleBlur } = useFormik({
     initialValues: {
       username: '',
@@ -22,7 +22,7 @@ export function Login() {
     onSubmit: (values, _helpers) => {
       loginHandler(values);
     }
-  })
+  });
 
   async function loginHandler(values) {
     if(!values.username || !values.passphrase) {
@@ -30,13 +30,6 @@ export function Login() {
     }
 
     try {
-      // const userObject = await fetchJson('/api/login', {
-      //   body: JSON.stringify(values),
-      //   headers: {
-      //     "Content-Type": "application/json"
-      //   },
-      //   method: 'POST'
-      // });
       const headers = new Headers();
       headers.set('Content-Type', 'application/json');
       const response = await fetch('/api/auth/login', {
@@ -54,24 +47,16 @@ export function Login() {
       }
 
       const userObject = await response.json();
-
-      dispatch({ type: 'LOGIN', payload: userObject});
+      mutateUser(userObject);
       router.push('/dashboard');
     } catch(err) {
       console.log(err)
     }
   }
 
-  useEffect(() => {
-    if(state.isLoggedIn) router.push('/dashboard');
-  }, []);
-
   return (
     <div className={classes.login}>
       <h2>Login Page</h2>
-      <button onClick={async () => {
-        const result = await fetchJson('/api/logout', {method: 'POST'});
-      }}>out</button>
       <form className={classes.form} onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username</label>

@@ -1,11 +1,9 @@
-import { withIronSessionApiRoute } from "iron-session/next";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { db } from "../../lib/database";
-import { sessionOptions } from "../../lib/withSession";
+import { pool } from "../../../lib/database";
+import { withSessionRoute } from "../../../lib/withSession";
 import formidable from 'formidable';
 import { IncomingMessage } from "http";
 import * as fs from 'fs';
-import { s3 } from "../../aws/aws";
+import { s3 } from "../../../aws/aws";
 
 // disable default req.body parser to parse FormData with formidable package.
 export const config = {
@@ -14,33 +12,31 @@ export const config = {
   }
 }
 
-export default withIronSessionApiRoute(handler, sessionOptions)
+export default withSessionRoute(handler);
 
-interface Project {
-  id: string;
-  title: string;
-  created_at: string;
-  last_edited_at: string;
-}
+// interface Project {
+//   id: string;
+//   title: string;
+//   created_at: string;
+//   last_edited_at: string;
+// }
 
-interface FormDataInterface {
-  title: string;
-  description: string;
-  repo: string;
-  demo_url: string;
-  thumbnail: string;
-  technologies: string[];
-  screenshots: formidable.File[];
-}
+// interface FormDataInterface {
+//   title: string;
+//   description: string;
+//   repo: string;
+//   demo_url: string;
+//   thumbnail: string;
+//   technologies: string[];
+//   screenshots: formidable.File[];
+// }
 
-async function handler( req: NextApiRequest, res: NextApiResponse ) {
-  if(!req.session.userId) {
+async function handler(req, res) {
+  if(!req.session.user) {
     return res.status(401).send({
       message: 'Unauthorized access to resources.'
     });
   }
-
-  const client = await db.connect();
 
   if(req.method === 'POST') {
     try {
@@ -52,13 +48,13 @@ async function handler( req: NextApiRequest, res: NextApiResponse ) {
         thumbnail,
         technologies,
         screenshots
-      } = await getFormData(req) as FormDataInterface;
+      } = await getFormData(req);
   
       if(!title || !repo || !technologies.length) {
         return res.status(502).send({ message: 'Missing parameters' });
       }
   
-      let thumbnailUrl: string;
+      let thumbnailUrl;
   
       if(screenshots.length) {
         // upload screenshots in parallel
@@ -78,7 +74,7 @@ async function handler( req: NextApiRequest, res: NextApiResponse ) {
         values ($1, $2, $3, $4, $5) returning id, title, created_at, last_edited_at;
       `;
   
-      const { rows } = await client.query(projectTableQuery, [
+      const { rows } = await pool.query(projectTableQuery, [
         title,
         repo,
         demo_url ?? null,
@@ -86,7 +82,7 @@ async function handler( req: NextApiRequest, res: NextApiResponse ) {
         thumbnailUrl ?? null
       ]);
 
-      const newProject: Project = rows[0];
+      const newProject = rows[0];
 
       const technologyTableQuery = `
         insert into technology (p_id, name)
@@ -94,13 +90,11 @@ async function handler( req: NextApiRequest, res: NextApiResponse ) {
       `;
 
       const technologiesPromises = technologies.map(t => {
-        return client.query(technologyTableQuery, [newProject.id, t])
+        return pool.query(technologyTableQuery, [newProject.id, t])
       });
 
       await Promise.all(technologiesPromises);
   
-      client.release();
-
       return res.json(newProject);
     } catch(err) {
       return res.status(500).send(err);
@@ -114,11 +108,9 @@ async function handler( req: NextApiRequest, res: NextApiResponse ) {
   `;
 
   try {
-    const result = await client.query(query);
+    const result = await pool.query(query);
 
-    const projects: Project[] = result.rows;
-
-    client.release();
+    const projects = result.rows;
 
     res.json(projects);
   } catch(err) {
@@ -128,7 +120,7 @@ async function handler( req: NextApiRequest, res: NextApiResponse ) {
 
 // If only one screenshot is provided, then an object will be returned, otherwise an array of objects will be returned.
 // To fix that, I'll check if returned value is of type array or object.
-function getFormData(req: IncomingMessage) {
+function getFormData(req) {
   const form = formidable({
     multiples: true
   });
@@ -155,7 +147,7 @@ function getFormData(req: IncomingMessage) {
 }
 
 // Returns an array of promises of uploading each screenshot file to S3 bucket.
-function getS3UploadPromises(subDirectory: string, screenshots: any[]) {
+function getS3UploadPromises(subDirectory, screenshots) {
   const promises = screenshots.map(ss => {
     return s3.upload({
       Bucket: 'sinabyr',

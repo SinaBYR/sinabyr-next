@@ -2,20 +2,20 @@ import { Link } from "../../utilities";
 import { FiSettings, FiInbox, FiLogOut } from 'react-icons/fi';
 import { GoProject } from 'react-icons/go';
 import { IoAnalytics } from 'react-icons/io5';
-import { useUser } from "../../../lib/useUser";
-import { fetchJson } from "../../../lib/fetchJson";
-import { User } from "../../../types/types";
 import { toast } from 'react-toastify';
+import { useClientAuth } from "../../../lib/useClientAuth";
 
 export function SidebarLinks() {
-  const { mutateUser } = useUser({
-    redirectTo: '/login'
-  });
+  const { mutateUser } = useClientAuth();
 
   async function handleLogout() {
     try {
-      const result = await fetchJson<User>('/api/logout', {method: 'POST'});
-      mutateUser(result, false);
+      const response = await fetch('/api/auth/logout', {method: 'POST'});
+      if(!response.ok) {
+        throw new Error('An error occured');
+      }
+      const result = await response.json();
+      mutateUser(result);
     } catch(err) {
       toast.error(err.message, {
         hideProgressBar: true,
@@ -52,7 +52,7 @@ export function SidebarLinks() {
         </Link>
       </li>
       <li>
-        <Link variant="simple-alt" href="/api/logout" onClick={e => {
+        <Link variant="simple-alt" href="/" onClick={e => {
           e.preventDefault();
           handleLogout();
         }}>
