@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/layout/rootLayout.jsx", "src/pages/api/auth/logout.js", "src/lib/useClientAuth.js", "src/pages/api/projects/projects.js", "src/components/dashboard/projects/projects.jsx", "src/components/dashboard/projects/project/project.jsx", "src/components/dashboard/sidebarLinks/sidebarLinks.jsx", "src/components/contact/validation-schema.js"  ],
+, "src/components/layout/rootLayout.jsx", "src/pages/api/auth/logout.js", "src/lib/useClientAuth.js", "src/pages/api/projects/projects.js", "src/components/dashboard/projects/projects.jsx", "src/components/dashboard/projects/project/project.jsx", "src/components/dashboard/sidebarLinks/sidebarLinks.jsx", "src/components/contact/validation-schema.js", "src/components/dashboard/create/create.jsx", "src/components/dashboard/create/form/uploadScreenshots/uploadScreenshots.jsx", "src/components/dashboard/create/form/selectRepo/selectRepo.jsx", "src/components/dashboard/create/form/addTechTags/addTechTags.jsx", "src/components/dashboard/create/form/form.jsx"  ],
   "exclude": [
     "node_modules"
   ]

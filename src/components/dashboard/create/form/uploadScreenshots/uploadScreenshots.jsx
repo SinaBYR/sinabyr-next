@@ -1,5 +1,4 @@
 import classes from './uploadScreenshots.module.scss';
-import { useEffect } from 'react';
 import Image from "next/legacy/image";
 import { useDropzone } from 'react-dropzone';
 import { FaCheckCircle } from 'react-icons/fa';
@@ -29,7 +28,7 @@ export function UploadScreenshots({
     ])
   }
 
-  function onRemoveScreenshot(filename: string) {
+  function onRemoveScreenshot(filename) {
     if(filename === thumbnail) {
       setFieldValue('thumbnail', '');
     }

@@ -4,14 +4,14 @@ import { toast } from 'react-toastify';
 
 export function SelectRepo({ setFieldValue }) {
   // repository selection search-box
-  function filterOptions(inputValue: string, options: any[]) {
+  function filterOptions(inputValue, options) {
     return options.filter(i => i.label.toLowerCase().includes(inputValue.toLowerCase()));
   };
 
   // fetch github repositories.
-  async function loadOptions(inputValue: string) {
+  async function loadOptions(inputValue) {
     try {
-      const repos: any[] = await fetchJson('https://api.github.com/users/sinabyr/repos?sort=created');
+      const repos = await fetchJson('https://api.github.com/users/sinabyr/repos?sort=created');
       const options = repos.map(r => {
         return {
           value: r.name,
@@ -35,7 +35,7 @@ export function SelectRepo({ setFieldValue }) {
       name="repo"
       id="repo"
       placeholder=""
-      onChange={(e: any) => setFieldValue('repo', e.value)}
+      onChange={e => setFieldValue('repo', e.value)}
       styles={{
         singleValue: baseStyles => ({
           ...baseStyles,
