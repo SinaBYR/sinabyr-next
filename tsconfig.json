@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/layout/rootLayout.jsx", "src/pages/api/auth/logout.js", "src/lib/useClientAuth.js", "src/pages/api/projects/projects.js", "src/components/dashboard/projects/projects.jsx", "src/components/dashboard/projects/project/project.jsx", "src/components/dashboard/sidebarLinks/sidebarLinks.jsx"  ],
+, "src/components/layout/rootLayout.jsx", "src/pages/api/auth/logout.js", "src/lib/useClientAuth.js", "src/pages/api/projects/projects.js", "src/components/dashboard/projects/projects.jsx", "src/components/dashboard/projects/project/project.jsx", "src/components/dashboard/sidebarLinks/sidebarLinks.jsx", "src/components/contact/validation-schema.js"  ],
   "exclude": [
     "node_modules"
   ]
