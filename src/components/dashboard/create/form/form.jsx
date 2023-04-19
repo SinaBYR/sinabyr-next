@@ -1,3 +1,5 @@
+'use client';
+
 import classes from './form.module.scss';
 import { Button, Spinner } from '../../../utilities';
 import { useFormik } from 'formik';
