@@ -8,6 +8,8 @@ export const metadata = {
   title: 'Sina Beyraghdar'
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function Page() {
   const projects = await getReducedProjects(2);
 
