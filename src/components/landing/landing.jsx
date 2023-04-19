@@ -6,14 +6,14 @@ export function Landing() {
     <section className={classes.landing} >
       <div className={classes.landingWrapper}>
         <h2>
-          <span>Let's give</span>
+          <span>Let&apos;s give</span>
           <br />
           <span>your business</span>
           <br />
           <span>wings to fly.</span>
         </h2>
         <p>
-          <span>I’m a Software Engineer who builds reliable, performant</span>
+          <span>I&apos;m a Software Engineer who builds reliable, performant</span>
           <br />
           <span>and secure web-based applications.</span>
         </p>

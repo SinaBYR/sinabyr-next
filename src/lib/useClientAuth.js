@@ -24,7 +24,7 @@ export function useClientAuth({
     ) {
       router.push(redirectTo)
     }
-  }, [user, redirectIfFound, redirectTo])
+  }, [user, redirectIfFound, redirectTo, router])
 
   return { user, mutateUser }
 }

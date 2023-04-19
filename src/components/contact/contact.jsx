@@ -28,7 +28,7 @@ export function Contact() {
     <section className={classes.contact}>
       <div className={classes.header}>
         <h2>Get in touch</h2>
-        <p>Send me a message and I'll get back to you as soon as possible.</p>
+        <p>Send me a message and I&apos;ll get back to you as soon as possible.</p>
       </div>
       {!isValid && <ul className={classes.errors}>{errorMessages}</ul>}
       <form className={classes.form} onSubmit={handleSubmit}>

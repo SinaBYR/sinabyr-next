@@ -50,6 +50,7 @@ export function UploadScreenshots({
             <div className={classes.previewImage}>
               <Image
                 src={URL.createObjectURL(f)}
+                alt="preview-image"
                 layout="fill"
                 style={{
                   opacity: thumbnail === f.name ? '0.4' : '1'
