@@ -1,7 +1,6 @@
 import { pool } from "../../../lib/database";
 import { withSessionRoute } from "../../../lib/withSession";
 import formidable from 'formidable';
-import { IncomingMessage } from "http";
 import * as fs from 'fs';
 import { s3 } from "../../../aws/aws";
 

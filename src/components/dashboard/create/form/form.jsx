@@ -11,7 +11,6 @@ import { SelectRepo } from './selectRepo/selectRepo';
 import { UploadScreenshots } from './uploadScreenshots/uploadScreenshots';
 import { fetchJson } from '../../../../lib/fetchJson';
 import { useRef, useState } from 'react';
-import Router from 'next/router';
 
 export function Form() {
   const [loading, setLoading] = useState(false);
@@ -44,12 +43,12 @@ export function Form() {
       });
 
       try {
-        await fetchJson('/api/projects', {
+        await fetchJson('/api/projects/projects', {
           method: 'POST',
           body: formData
         });
 
-        Router.push('/dashboard/projects');
+        document.location.href = '/dashboard/projects';
       } catch(err) {
         toastRef.current = toast.error(err.data?.message ?? err.message);
       } finally {

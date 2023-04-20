@@ -5,6 +5,10 @@ import { useServerAuth } from '../../../lib/useServerAuth';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: 'Projects',
+}
+
 export default async function DashboardProjectsPage() {
   const [isLoggedIn, _user] = await useServerAuth();
 

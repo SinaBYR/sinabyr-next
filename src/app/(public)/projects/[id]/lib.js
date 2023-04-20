@@ -2,6 +2,17 @@ import { pool } from '../../../../lib/database';
 import { s3 } from '../../../../aws/aws';
 import { fetchJson } from '../../../../lib/fetchJson';
 
+// Get meta data of a project. used to generate project page's title
+export async function getProjectMetaData(id) {
+  const result = await pool.query(`
+    select title
+    from project
+    where id = $1;
+`, [id]);
+
+  return result.rows[0];
+}
+
 // This util function retrieves a single project data
 // It's used in pages/projects/[id].tsx component to
 // fetch individual project.
