@@ -7,7 +7,7 @@ export function ReducedProject({ id, title, description, thumbnail, techList }) 
     <div className={classes.wrapper} key={id}>
       <div className={classes.preview}>
         <Image
-          src={thumbnail || '/img/project_preview_fallback.png'}
+          src={thumbnail || 'https://sinabyr.storage.iran.liara.space/skills-icons/project_preview_fallback.png'}
           alt="project-preview-screenshot"
           layout="fill"/>
         <div className={classes.title}>{title}</div>
