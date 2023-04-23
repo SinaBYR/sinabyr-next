@@ -4,7 +4,7 @@ import { Skill } from './skill/skill';
 export function Skills() {
   const srcPrefix = 'https://sinabyr.storage.iran.liara.space/skills-icons';
   return (
-    <div className={classes.skills}>
+    <section className={classes.skills}>
       <h2>Skills</h2>
       <div className={classes.technologies}>
         <Skill src={srcPrefix + '/html5.png'} alt="html5" title="HTML5"/>
@@ -26,6 +26,6 @@ export function Skills() {
         <Skill src={srcPrefix + '/babel.png'} alt="babel" title="Babel"/>
         <Skill src={srcPrefix + '/styled-components.png'} alt="styled-components" title="Styled components"/>
       </div>
-    </div>
+    </section>
   )
 }

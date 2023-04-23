@@ -5,7 +5,7 @@ import { BsFiles } from 'react-icons/bs';
 
 export function Showcase({ projects }) {
   return (
-    <main className={classes.showcase}>
+    <section className={classes.showcase}>
       <div className={classes.wrapper}>
         <h2>Latest Projects</h2>
         {
@@ -39,6 +39,6 @@ export function Showcase({ projects }) {
           </>
         }
       </div>
-    </main>
+    </section>
   )
 }
