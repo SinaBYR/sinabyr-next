@@ -13,10 +13,11 @@ export function Contact() {
     initialValues: {
       fullname: '',
       email: '',
+      subject: '',
       message: ''
     },
     onSubmit: (values, _helpers) => {
-      sendMessageHandler(values.fullname, values.email, 'SUBJECT', values.message);
+      sendMessageHandler(values.fullname, values.email, values.subject, values.message);
     },
     validationSchema,
     validateOnChange: false,
@@ -81,6 +82,18 @@ export function Contact() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
+            />
+        </div>
+        <div>
+          <label htmlFor="subject">Subject</label>
+          <input
+            type="subject"
+            name="subject"
+            id="subject"
+            autoComplete="off"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.subject}
             />
         </div>
         <div>

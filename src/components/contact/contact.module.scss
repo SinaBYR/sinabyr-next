@@ -40,8 +40,8 @@
   max-width: 680px;
   margin: 0 auto;
 
-  // span textarea across the grid layout.
-  & > *:nth-child(3) {
+  // span textarea and subject across the grid layout.
+  & > *:is(:nth-child(3), :nth-child(4)) {
     grid-column: 1 /span 2;
   }
 
