@@ -1,5 +1,19 @@
 .listItem {
-  margin: 0 4px;
+  display: flex;
+  align-items: center;
+  margin: 0 8px;
+}
+
+.mailAddress {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  background-color: #0a0d0f;
+  padding: 0.5rem 1rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 680px) {
