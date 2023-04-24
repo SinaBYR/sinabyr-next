@@ -22,6 +22,7 @@ export function Project ({
     contributors,
     screenshots
   } = project;
+  console.log(description);
   return (
     <section className={classes.project}>
       <div className={classes.wrapper}>
@@ -34,7 +35,7 @@ export function Project ({
             created_at={created_at}
             repo={repo}
             contributors={contributors}/>
-          <div className={classes.description} dangerouslySetInnerHTML={description} />
+          <div className={classes.description} dangerouslySetInnerHTML={{__html: description}} />
         </div>
         <Sidebar 
           demo_url={demo_url}
