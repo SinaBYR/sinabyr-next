@@ -16,7 +16,7 @@ export function ReducedProject({ id, title, description, thumbnail, techList }) 
         <div className={classes.tech}>
           {techList.map(val => <span key={val}>{val}</span>)}
         </div>
-        <p>{description}</p>
+        <p dangerouslySetInnerHTML={{__html: description}} />
         <Link variant="secondary" href={"/projects/" + id}>Read more</Link>
       </div>
     </div>
