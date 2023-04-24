@@ -34,7 +34,7 @@ export function Project ({
             created_at={created_at}
             repo={repo}
             contributors={contributors}/>
-          <div className={classes.description}>{description}</div>
+          <div className={classes.description} dangerouslySetInnerHTML={description} />
         </div>
         <Sidebar 
           demo_url={demo_url}
