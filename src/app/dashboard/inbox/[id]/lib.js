@@ -13,7 +13,7 @@ export async function getMessageMetaData(id) {
 
 export async function getFullMessage(id) {
   let result = await pool.query(`
-    SELECT *
+    SELECT id, full_name, subject, email, message, to_char(sent_at, 'yyyymmdd') as sent_at
     FROM message
     WHERE id = $1
   `, [id]);
