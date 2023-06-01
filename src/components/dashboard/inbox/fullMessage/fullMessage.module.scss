@@ -1,0 +1,25 @@
+.fullMessage {
+  & > * {
+    margin-bottom: 1rem;
+  }
+}
+
+.header {
+  background-color: #030202;
+  padding: 1rem;
+
+  span:not(:last-child) {
+    color: #5b5a5a;
+    font-size: 14px;
+  }
+
+  & > * {
+    margin-bottom: 0.25rem;
+  }
+}
+
+.messageText {
+  background-color: #030202;
+  padding: 1rem;
+  line-height: 1.4;
+}

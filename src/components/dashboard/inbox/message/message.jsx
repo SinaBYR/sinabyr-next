@@ -20,7 +20,7 @@ export function Message({ id, subject, sent_at }) {
         </div>
       </div>
       <div className={classes.controls}>
-        <Link href={"/dashboard/messages/" + id} title="archive">View</Link>
+        <Link href={"/dashboard/inbox/" + id} title="archive">View</Link>
       </div>
     </div>
   )
