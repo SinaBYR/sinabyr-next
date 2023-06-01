@@ -1,25 +1,53 @@
 'use client';
 
 import classes from './contact.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import { Button } from '../utilities';
 import { useFormik } from 'formik';
 import { validationSchema } from './validation-schema';
-import { BiError } from 'react-icons/bi'
+import { BiError } from 'react-icons/bi';
+import { ToastContainer, toast } from 'react-toastify';
 
 export function Contact() {
-  const { values, errors, isValid, submitCount, handleSubmit, handleChange, handleBlur } = useFormik({
+  const { values, errors, isValid, handleSubmit, handleChange, handleBlur, resetForm } = useFormik({
     initialValues: {
       fullname: '',
       email: '',
+      subject: '',
       message: ''
     },
     onSubmit: (values, _helpers) => {
-      console.log(values);
+      sendMessageHandler(values.fullname, values.email, values.subject, values.message);
     },
     validationSchema,
     validateOnChange: false,
     validateOnBlur: false
   });
+
+  async function sendMessageHandler(fullName, email, subject, message) {
+    try {
+      let headers = new Headers();
+      headers.set('Content-Type', 'application/json');
+      let response = await fetch('/api/messages/sendMessage', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          fullName,
+          email,
+          subject,
+          message
+        })
+      });
+      if(!response.ok) {
+        return toast.error('Sending message failed. Please try again.');
+      }
+      resetForm();
+      toast.success('Message sent successfully');
+    } catch(err) {
+      console.log(err);
+      toast.error(err.message);
+    }
+  }
 
   const errorMessages = Object.keys(errors)
     .map(field => <li key={field}><BiError color="#fd3c3c" />{errors[field]}</li>);
@@ -57,6 +85,18 @@ export function Contact() {
             />
         </div>
         <div>
+          <label htmlFor="subject">Subject</label>
+          <input
+            type="subject"
+            name="subject"
+            id="subject"
+            autoComplete="off"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.subject}
+            />
+        </div>
+        <div>
           <label htmlFor="message">Message</label>
           <textarea
             name="message"
@@ -68,6 +108,11 @@ export function Contact() {
         </div>
         <Button type="submit" variant="primary">Send</Button>
       </form>
+      <ToastContainer
+        hideProgressBar
+        position="top-center"
+        theme="dark"
+        toastStyle={{fontSize: '15px', textAlign: 'center'}}/>
     </section>
   )
 }

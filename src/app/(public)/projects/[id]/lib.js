@@ -14,7 +14,7 @@ export async function getProjectMetaData(id) {
 }
 
 // This util function retrieves a single project data
-// It's used in pages/projects/[id].tsx component to
+// It's used in app/(public)/projects/[id].tsx component to
 // fetch individual project.
 // id: required => used to fetch a single matching project data.
 export async function getProject(id) {

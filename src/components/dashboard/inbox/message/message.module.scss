@@ -1,0 +1,40 @@
+.message {
+  display: flex;
+  align-items: center;
+  background-color: #030202;
+  padding: 1rem;
+}
+
+.info {
+  margin-right: auto;
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+}
+
+.infoSubGroup {
+  display: flex;
+
+  div {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+  }
+
+  span {
+    color: #5b5a5a;
+    font-size: 14px;
+
+    &:last-child {
+      color: #aeaeae;
+    }
+  }
+}
+
+.controls {
+  & > * {
+    margin-left: 0.5rem;
+  }
+}

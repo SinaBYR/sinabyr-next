@@ -14,9 +14,7 @@ export function Footer() {
         </div>
         <div>
           <div className={classes.linksWrapper}>
-            <Link variant="simple" href="/projects">Projects</Link>
-            <Link variant="simple" href="/projects">About me</Link>
-            <Link variant="simple" href="/projects">Panel</Link>
+            <Link variant="simple" href="mailto:contact@sinabyr.ir">contact [at] sinabyr.ir</Link>
           </div>
           <div className={classes.socials}>
             <a href="https://www.github.com/SinaBYR" target="_blank" rel="noopener noreferrer">

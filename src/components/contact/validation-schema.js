@@ -15,7 +15,10 @@ export const validationSchema = yup.object().shape({
       'Email address is not valid.',
       (value) => emailRegex.test(value)
     ),
+  subject: yup
+    .string()
+    .required('Subject is required.'),
   message: yup
     .string()
-    .required('Message box cannot be empty.')
+    .required('Message is required.')
 })
